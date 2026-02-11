@@ -30,12 +30,30 @@ financial markets. This tool is useful for travelers, remittances, and online pu
 </div>
 
 <script>
-function convertUSD() {
+async function convertUSD() {
+
 let usd = document.getElementById("usd").value;
-let rate = 83; 
-let result = usd * rate;
-document.getElementById("result").innerText =
-usd + " USD = " + result.toFixed(2) + " INR";
+
+if (!usd || usd <= 0) {
+    document.getElementById("result").innerText = "Please enter a valid amount.";
+    return;
+}
+
+try {
+    let response = await fetch("https://open.er-api.com/v6/latest/USD");
+    let data = await response.json();
+
+    let rate = data.rates.INR;
+    let result = usd * rate;
+
+    document.getElementById("result").innerText =
+        usd + " USD = " + result.toFixed(2) + " INR";
+}
+catch (error) {
+    document.getElementById("result").innerText =
+        "Error fetching exchange rate. Please try again.";
+}
+
 }
 </script>
 
