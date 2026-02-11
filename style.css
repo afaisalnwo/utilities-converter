@@ -1,0 +1,45 @@
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+background: #f4f6f8;
+text-align: center;
+}
+
+header {
+background: #222;
+color: white;
+padding: 20px;
+}
+
+.container {
+margin-top: 40px;
+}
+
+input {
+padding: 10px;
+margin: 10px;
+width: 200px;
+}
+
+button {
+padding: 10px 20px;
+background: #0070f3;
+color: white;
+border: none;
+cursor: pointer;
+}
+
+button:hover {
+background: #0059c1;
+}
+
+a {
+text-decoration: none;
+color: #0070f3;
+font-size: 18px;
+}
+
+ul {
+list-style: none;
+padding: 0;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USD to INR Converter – Live Calculator</title>
+<meta name="description" content="Convert USD to INR instantly using live exchange rate calculator.">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+<h1>USD to INR Converter</h1>
+</header>
+
+<div class="container">
+<input type="number" id="usd" placeholder="Enter USD amount">
+<button onclick="convertUSD()">Convert</button>
+<h2 id="result"></h2>
+</div>
+
+<script>
+function convertUSD() {
+let usd = document.getElementById("usd").value;
+let rate = 83; // temporary static rate
+let result = usd * rate;
+document.getElementById("result").innerText = usd + " USD = " + result + " INR";
+}
+</script>
+
+</body>
+</html>
