@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USD to INR Converter – Live Exchange Rate Calculator</title>
+<meta name="description" content="Convert USD to INR instantly. Free and fast currency converter with latest exchange rate.">
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<header>
+<h1>USD to INR Converter</h1>
+</header>
+
+<div class="container">
+
+<input type="number" id="usd" placeholder="Enter USD amount">
+<button onclick="convertUSD()">Convert</button>
+<h2 id="result"></h2>
+
+<h2>About USD to INR Conversion</h2>
+<p>
+This USD to INR converter helps you quickly calculate the Indian Rupee value
+for any US Dollar amount. The exchange rate fluctuates daily depending on global
+financial markets. This tool is useful for travelers, remittances, and online purchases.
+</p>
+
+</div>
+
+<script>
+async function convertUSD() {
+
+let usd = document.getElementById("usd").value;
+
+if (!usd || usd <= 0) {
+    document.getElementById("result").innerText = "Please enter a valid amount.";
+    return;
+}
+
+try {
+    let response = await fetch("https://open.er-api.com/v6/latest/USD");
+    let data = await response.json();
+
+    let rate = data.rates.INR;
+    let result = usd * rate;
+
+    document.getElementById("result").innerText =
+        usd + " USD = " + result.toFixed(2) + " INR";
+}
+catch (error) {
+    document.getElementById("result").innerText =
+        "Error fetching exchange rate. Please try again.";
+}
+
+}
+</script>
+
+</body>
+</html>
